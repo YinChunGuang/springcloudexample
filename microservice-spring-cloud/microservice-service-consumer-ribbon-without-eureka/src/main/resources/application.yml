@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: microservice-service-consumer-ribbon-without-eureka
+server:
+  port: 7901
+ 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:111111@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+#    此时eureka在项目中需要添加
+ribbon:
+  eureka:
+   enabled: false
+#    此时没有eureka 仅仅需要下面就行了   ，此时只应该访问我们的 7900服务，才证明这里生效了
+microservice-service-provider:
+  ribbon:
+    listOfServers: localhost:7900

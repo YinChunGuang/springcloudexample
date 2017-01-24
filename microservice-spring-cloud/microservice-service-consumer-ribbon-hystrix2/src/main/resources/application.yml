@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: microservice-service-consumer-ribbon-hystrix2
+server:
+  port: 7901
+  context-path: /ribbon
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:111111@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+    home-page-url-path: /ribbon
+    

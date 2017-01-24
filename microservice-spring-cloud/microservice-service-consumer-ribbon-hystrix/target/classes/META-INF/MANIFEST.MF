@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Implementation-Title: microservice-service-consumer-ribbon-hystrix
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Administrator
+Implementation-Vendor-Id: com.chunguang
+Build-Jdk: 1.8.0_60
+Implementation-URL: http://projects.spring.io/spring-boot/microservice
+ -spring-cloud/microservice-service-consumer-ribbon-hystrix/
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

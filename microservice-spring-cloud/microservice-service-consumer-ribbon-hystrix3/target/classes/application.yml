@@ -1,0 +1,28 @@
+management: # spring-boot-starter-acturator  的配置让 acturator来使用一个自己的端口
+  port: 8081
+spring:
+  application:
+    name: microservice-service-consumer-ribbon-hystrix3
+server:
+  port: 8010
+  context-path: /ribbon
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://user:111111@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    metadata-map:
+      management.port: 8081       # 既然上面已经配置了端口了，这里告诉eureka 这里的端口
+      cluster: ABC
+
+      
+#      This means that if spring-boot-actuator is running on its own port (which is the default), 
+#      the call to /hystrix.stream will fail. To make turbine find the Hystrix stream at the correct port,
+#       you need to add management.port to the instances' metadata:
+#      eureka:
+#        instance:
+#          metadata-map:
+#            management.port: ${management.port:8081}

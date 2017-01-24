@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: microservice-service-consumer-feign-without-hystrix
+server:
+  port: 7909
+ 
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://user:111111@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+#测试完feign的自定义注解，现在来看看日志级别的定义
+# feign 默认不打印日志，可以设置级别为full
+logging:
+  level:
+    com.itmuch.cloud.feign.UserFeignClient: DEBUG
+# 解决第一次请求报超时异常的方案：
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds: 15000
+# 或者：
+# hystrix.command.default.execution.timeout.enabled: false
+# 或者：
+#feign.hystrix.enabled: false ## 索性禁用feign的hystrix支持
+ 
